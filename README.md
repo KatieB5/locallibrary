@@ -1,5 +1,7 @@
 # Local Library Project
 
+## Project details
+
 ## Introduction
 This project contains a website that might be used to manage the catalog for a local library.
 
