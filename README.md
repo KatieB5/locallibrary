@@ -15,8 +15,9 @@ This project was built whilst following the MDN "Local Library" Django tutorial.
 The Django documentation can be found [here](https://docs.djangoproject.com/en/5.1/).
 
 ## Getting started
-1. Clone this repository and switch to the new directory
+1. Clone this repository and ``cd`` into the new directory
 2. Activate a virtualenv for this project: ``python -m venv <virtualenvname>``
 3. Install project dependencies: ``pip install -r requirements/local.txt``
-4. Fire up the server: ``python manage.py runserver``
+4. Apply the migrations: ``python manage.py migrate``
+5. Fire up the development server: ``python manage.py runserver``
 
