@@ -1,12 +1,16 @@
 {% extends "base.html" %} 
 
-{% block title %}
-<title>Home</title>
-{% endblock %}
+<head>
+  {% block title %}
+  <title>Local Library</title>
+  {% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
 
 {% block content %}
 
-<h1>Local Library Home</h1>
+<h1 style="margin-top: 20px;">Local Library Home</h1>
 <p>
   Welcome to the Local Library, a website developed whilst following the
   <em>MDN Django tutorial.</em>
@@ -20,6 +24,8 @@
     <strong>Copies available for loan:</strong> {{num_available_instances}}
   </li>
   <li><strong>Authors:</strong> {{num_of_authors}}</li>
+  <li><strong>Fiction books:</strong> {{ num_fiction_books }}</li>
+  <li><strong>Non-fiction books:</strong> {{ num_nonfiction_books }}</li>
 </ul>
 
 {% endblock %}
