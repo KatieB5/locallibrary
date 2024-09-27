@@ -34,13 +34,13 @@
                 <div class="pagination">
                     <span class="page-links">
                         {% if page_obj.has_previous %}
-                            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Previous</a>
+                            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">{% include './icons/arrow-left-circle-fill.svg' %}</a>
                         {% endif %}
                         <span class="page-current">
                             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                         </span>
                         {% if page_obj.has_next %}
-                            <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Next</a>
+                            <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">{% include './icons/arrow-right-circle-fill.svg' %}</a>
                         {% endif %}
                     </span>
                 </div>
