@@ -18,6 +18,10 @@ def home(request):
 
     num_nonfiction_books = Book.objects.filter(genre__name__iexact='Non-fiction').count()
 
+    num_visits = request.session.get('num_visits', 0)
+    num_visits += 1
+    request.session['num_visits'] = num_visits
+
 
     context = {
         'num_of_books': num_of_books,
@@ -27,6 +31,7 @@ def home(request):
         'num_of_genres': num_of_genres,
         'num_fiction_books': num_fiction_books,
         'num_nonfiction_books': num_nonfiction_books,
+        'num_visits': num_visits,
     }
 
     return render(request, 'home.html', context=context)
