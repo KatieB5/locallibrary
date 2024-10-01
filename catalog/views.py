@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Book, Author, BookInstance, Genre
-# from django.shortcuts import get_object_or_404
 
 def home(request):
 

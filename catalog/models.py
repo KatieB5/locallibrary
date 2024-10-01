@@ -3,6 +3,10 @@ from django.urls import reverse
 from django.db.models import UniqueConstraint 
 from django.db.models.functions import Lower 
 import uuid
+from django.conf import settings
+from datetime import date
+
+
 
 # Create your models here.
 
@@ -63,6 +67,15 @@ class BookInstance(models.Model):
         default='m',
         help_text='Book availability',
     )
+
+    # THis tutorial did not implement a custom user model, thus currently 'settings.AUTH_USER_MODEL' maps to the default User model from django.contrib.auth.models. Using 'settings.AUTH_USER_MODEL' vs importing and using User, reduces the work required if later we decide we need a custom user model
+    borrower = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+
+    @property
+    def is_overdue(self):
+        """Determines if the book is overdue based on due date and current date."""
+        return bool(self.due_back and date.today() > self.due_back)
+
 
     class Meta:
         ordering = ['due_back']
