@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Delete Author: {{ author }}</h1>
+<h1 style="margin-top: 20px">Delete Author: {{ author }}</h1>
 
 {% if author.book_set.all %}
 
@@ -18,7 +18,7 @@
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" action="" value="Yes, delete.">
+  <input type="submit" action="" value="Yes, delete." style="color: white; font-weight: bolder; background-color: #ec130c; border: 2px solid rgb(94, 2, 2);">
 </form>
 {% endif %}
 
