@@ -114,8 +114,7 @@ class AuthorCreate(PermissionRequiredMixin, CreateView):
 
 class AuthorUpdate(PermissionRequiredMixin, UpdateView):
     model = Author
-    # Not recommended (potential security issue if more fields added)
-    fields = '__all__'
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
     permission_required = 'catalog.change_author'
 
 class AuthorDelete(PermissionRequiredMixin, DeleteView):
