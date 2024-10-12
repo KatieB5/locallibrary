@@ -43,6 +43,7 @@
 
     {% if perms.catalog.change_bookinstance %}
       <a href="{% url 'bookinstance-update' copy.id %}" style="margin-top: 5px; margin-bottom: 5px; padding: 5px; color: rgb(255, 255, 255); font-weight: bolder; background-color: hsl(212, 44%, 54%); border: 2px solid rgb(2, 94, 33);">Update copy</a>
+      <a href="{% url 'bookinstance-delete' copy.id %}" style="margin-top: 5px; margin-bottom: 5px; padding: 5px; color: rgb(255, 255, 255); font-weight: bolder; background-color: hsl(7, 92%, 38%); border: 2px solid rgb(2, 94, 33);">Delete copy</a>
     {% endif %}
   {% endfor %}
 </div>

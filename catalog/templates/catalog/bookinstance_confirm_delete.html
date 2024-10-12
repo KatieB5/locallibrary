@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="margin-top: 20px">Delete copy of book: {{ book }}</h1>
+
+<p>Are you sure you want to delete this copy?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" action="" value="Yes, delete." style="color: white; font-weight: bolder; background-color: #ec130c; border: 2px solid rgb(94, 2, 2);">
+</form>
+
+{% endblock %}

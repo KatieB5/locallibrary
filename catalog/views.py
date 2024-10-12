@@ -164,3 +164,16 @@ class BookInstanceUpdate(PermissionRequiredMixin, UpdateView):
     model = BookInstance
     fields = ['book', 'imprint', 'due_back', 'status', 'borrower']
     permission_required = 'catalog.change_bookinstance'
+
+class BookInstanceDelete(PermissionRequiredMixin, DeleteView):
+    model = BookInstance
+    permission_required = 'catalog.delete_bookinstance'
+
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+            return HttpResponseRedirect(reverse('book-detail', args=[str(self.object.book.id)]))
+        except Exception:
+            return HttpResponseRedirect(
+                reverse("bookinstance-delete", kwargs={"pk": self.object.book.id})
+            )
