@@ -72,6 +72,9 @@ class BookInstance(models.Model):
     # THis tutorial did not implement a custom user model, thus currently 'settings.AUTH_USER_MODEL' maps to the default User model from django.contrib.auth.models. Using 'settings.AUTH_USER_MODEL' vs importing and using User, reduces the work required if later we decide we need a custom user model
     borrower = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('book-detail', args=[str(self.book.id)])
+
     @property
     def is_overdue(self):
         """Determines if the book is overdue based on due date and current date."""
