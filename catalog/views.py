@@ -157,5 +157,10 @@ class BookDelete(PermissionRequiredMixin, DeleteView):
         
 class BookInstanceCreate(PermissionRequiredMixin, CreateView):
     model = BookInstance
-    fields = ['book', 'imprint', 'due_back', 'status']
+    fields = ['book', 'imprint', 'due_back', 'status', 'borrower']
     permission_required = 'catalog.add_bookinstance'
+
+class BookInstanceUpdate(PermissionRequiredMixin, UpdateView):
+    model = BookInstance
+    fields = ['book', 'imprint', 'due_back', 'status', 'borrower']
+    permission_required = 'catalog.change_bookinstance'
