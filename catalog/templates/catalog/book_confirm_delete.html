@@ -9,7 +9,7 @@
 <p>You can't delete this book until all the instances of the book have been deleted:</p>
 <ul>
   {% for bookinstance in book.bookinstance_set.all %}
-    <li><a href="{% url 'book-detail' book.pk %}">{{book}}</a></li>
+    <li><a href="{% url 'book-detail' book.pk %}">{{book}}</a> (Unique ID: {{bookinstance.id}})</li>
   {% endfor %}
 </ul>
 
