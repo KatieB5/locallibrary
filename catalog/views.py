@@ -134,5 +134,9 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
 class BookCreate(PermissionRequiredMixin, CreateView):
     model = Book
     fields = ['title', 'author', 'summary', 'isbn', 'language', 'genre']
-    permission_required = 'catalog.change_book'
+    permission_required = 'catalog.add_book'
     
+class BookUpdate(PermissionRequiredMixin, UpdateView):
+    model = Book
+    fields = ['title', 'author', 'summary', 'isbn', 'language', 'genre']
+    permission_required = 'catalog.change_book'

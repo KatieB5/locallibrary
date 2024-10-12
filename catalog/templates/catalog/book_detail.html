@@ -1,4 +1,20 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+
+{% block sidebar %}
+  {{ block.super }}
+
+  {% if perms.catalog.change_author or perms.catalog.delete_author %}
+  <hr>
+  <ul class="sidebar-nav">
+    {% if perms.catalog.change_book %}
+      <li><a href="{% url 'book-update' book.id %}">Update book</a></li>
+    {% endif %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
+
+{% block content %}
 <h1 style="margin-top: 20px">Title: {{ book.title }}</h1>
 
 <p>
