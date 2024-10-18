@@ -11,7 +11,6 @@ User = get_user_model()
 class AuthorListViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        # Create 13 authors for pagination tests
         number_of_authors = 13
 
         for author_id in range(number_of_authors):
@@ -37,15 +36,14 @@ class AuthorListViewTest(TestCase):
         response = self.client.get(reverse('authors'))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('is_paginated' in response.context)
-        self.assertTrue(response.context['is_paginated'] == True)
+        self.assertTrue(response.context['is_paginated'])
         self.assertEqual(len(response.context['author_list']), 10)
 
     def test_lists_all_authors(self):
-        # Get second page and confirm it has (exactly) remaining 3 items
         response = self.client.get(reverse('authors')+'?page=2')
         self.assertEqual(response.status_code, 200)
         self.assertTrue('is_paginated' in response.context)
-        self.assertTrue(response.context['is_paginated'] == True)
+        self.assertTrue(response.context['is_paginated'])
         self.assertEqual(len(response.context['author_list']), 3)
 
 class LoanedBookInstancesByUserListViewTest(TestCase):
